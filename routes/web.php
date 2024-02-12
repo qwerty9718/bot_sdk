@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BotController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/show', [BotController::class,'getMe']);
+Route::get('/set-hook', [BotController::class,'setWebhook']);
+Route::post('/'. env('TELEGRAM_BOT_TOKEN'). '/webhook',[BotController::class,'webHookHandler']);
